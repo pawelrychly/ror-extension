@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
+    <program provider="PutPoznan"
+        name="preferentionalReductsForNecessaryRelations"
+        displayName="preferentionalReductsForNecessaryRelations"
+        version="1.0" />
+    <documentation>
+        <description>Finds preferentional reducts for all necessary preference relations.</description>
+        <contact>Pawel Rychly (pawelrychly@gmail.com).</contact>
+    </documentation>
+    
+    
+    <parameters>
+        <input id="alternatives"
+            name="alternatives"
+            displayName="alternatives"
+            isoptional="0">
+            <documentation>
+                <description>List of alternatives data. </description>
+            </documentation>
+            <xmcda tag="alternatives">
+                <![CDATA[
+                    <alternatives>
+						<alternative id="[...]" name="[...]" />
+						[...]
+					</alternatives>
+                    ]]>
+            </xmcda>
+        </input>
+		
+		<input id="criteria"
+            name="criteria"
+            displayName="criteria"
+            isoptional="0">
+            <documentation>
+                <description>List of criteria data. </description>
+            </documentation>
+            <xmcda tag="criteria">
+                <![CDATA[
+                    <criteria>
+						<criterion id="[...]" name="[...]">
+							<scale>
+								<quantitative>
+									<preferenceDirection>max <!-- only max value allowed --></preferenceDirection>
+								</quantitative>
+							</scale>
+						</criterion>
+						[...]
+					</criteria>
+                    ]]>
+            </xmcda>
+        </input>
+		
+        <input id="performances"
+            name="performances"
+            displayName="performances"
+            isoptional="0">
+            <documentation>
+                <description>Description of alternatives performance - values on criteria. </description>
+            </documentation>
+            <xmcda tag="performanceTable">
+                <![CDATA[
+                    <performanceTable>
+                        <alternativePerformances> 
+						    <alternativeID>[...]</alternativeID>
+							<performance>
+								<criterionID>[...]</criterionID>
+								<value>
+									<real>[...]</real>
+								</value>
+							</performance>
+							[...]
+                        </alternativePerformances>
+						[...]
+                    </performanceTable>
+                    ]]>
+            </xmcda>
+        </input>
+        
+        
+        <input id="preferences" name="preferences" displayName="preferences"
+            isoptional="1">
+            
+            <documentation>
+                <description>
+					Preference relations.
+				</description>
+            </documentation>
+            <xmcda tag="alternativesComparisons">
+                <![CDATA[
+                    <alternativesComparisons mcdaConcept="preferences">
+                        <pairs>
+                            <pair>
+								<initial>
+									<alternativeID>[...]</alternativeID>
+								</initial>
+								<terminal>
+									<alternativeID>[...]</alternativeID>
+								</terminal>
+								 <value>
+									<integer>[...] <!-- type of relation: 0 - indif 1 - weak 2 - strong --></integer>
+								</value>
+							</pair>
+                            [...]
+                        </pairs>
+                    </alternativesComparisons>
+                    ]]>
+            </xmcda>
+        </input>
+		
+		<input id="characteristic-points" name="characteristic-points" displayName="characteristic points"
+            isoptional="1">
+            
+            <documentation>
+                <description>
+					Numbers of characteristic points for criteria. If 0 or not given then characteristic points are not used.
+				</description>
+            </documentation>
+            <xmcda tag="criteriaValues">
+                <![CDATA[
+                     <criteriaValues mcdaConcept="characteristicPoints">
+						<criterionValue>
+							<criterionID>[...]</criterionID>
+							<value>
+								<integer>[...]</integer>
+							</value>
+						</criterionValue>
+						[...]
+					</criteriaValues>
+                    ]]>
+            </xmcda>
+        </input>
+		
+		<input id="strict" name="strict" displayName="strict"
+            isoptional="1">
+            
+            <documentation>
+                <description>
+					Single integer value. Determines whether to use sctrictly increasing (1) or monotonously increasing (other number)
+value functions
+				</description>
+            </documentation>
+            <xmcda tag="methodParameters">
+                <![CDATA[
+                     <methodParameters>
+						<parameter>
+							<value>
+								<integer>[...]</integer>
+							</value>
+						</parameter>
+					</methodParameters>
+                    ]]>
+            </xmcda>
+        </input>
+		
+		
+        <output id="messages"
+            name="messages"
+            displayName="messages">
+            
+            <documentation>
+                <description>A list of messages generated by the algorithm.</description>
+            </documentation>
+            <xmcda tag="methodMessages"/>
+        </output>
+        
+        <output id="necessary-relations"
+            name="necessary-relations"
+            displayName="necessary-relations">
+            
+            <documentation>
+                <description>List of necessary preference relations founded by UTA GMS.
+				Relation id given as integer value is used in file reducts-by-necessary-relations to identify relation. 
+				</description>
+            </documentation>
+            <xmcda tag="alternativesComparisons">
+                <![CDATA[
+                     <alternativesComparisons>
+						<pairs>
+						  <pair>
+							<initial>
+							  <alternativeID>[...]</alternativeID>
+							</initial>
+							<terminal>
+							  <alternativeID>[...]</alternativeID>
+							</terminal>
+							<value>
+							  <integer>[...]<!-- unique id used to identify relation in reducts-by-necessary-relations.xml --></integer>
+							</value>
+						  </pair>
+						  [...]
+						</pairs>
+					</alternativesComparisons>
+                    ]]>
+            </xmcda>
+        </output>
+		
+		<output id="reducts-by-necessary-relations"
+            name="reducts-by-necessary-relations"
+            displayName="reducts by necessary relations">
+            
+            <documentation>
+                <description>Reduct's informations. List of comparisons with necessary relation ids. 
+					Relation id must be the same as in necessary-relations.xml file. 
+				</description>
+            </documentation>
+            <xmcda tag="alternativesComparisons">
+                <![CDATA[
+                    <alternativesComparisons>
+						<pairs>
+						  <pair>
+							<initial>
+							  <alternativeID>[...]</alternativeID>
+							</initial>
+							<terminal>
+							  <alternativeID>[...]</alternativeID>
+							</terminal>
+							<value name="[greater-or-equal | greater-then| indifference ]">
+							  <integer>[...]<!-- unique id used to identify relation in necessary-relation.xml --></integer>
+							</value>
+						  </pair>
+						  [...]
+						</pairs>
+					</alternativesComparisons>
+                    ]]>
+            </xmcda>
+        </output>
+        
+    </parameters>
+</program_description>
+

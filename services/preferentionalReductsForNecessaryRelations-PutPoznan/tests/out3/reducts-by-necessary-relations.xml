@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<xmcda:XMCDA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xmcda="http://www.decision-deck.org/2012/XMCDA-2.2.0" xsi:schemaLocation="http://www.decision-deck.org/2012/XMCDA-2.2.0 http://www.decision-deck.org/xmcda/_downloads/XMCDA-2.2.0.xsd">
+  <alternativesComparisons>
+    <pairs>
+      <pair>
+        <initial>
+          <alternativeID>a01</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a03</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>1</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a03</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a02</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>1</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a01</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a03</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>2</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a03</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a02</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>3</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a03</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a02</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>8</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a03</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a02</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>9</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a01</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a03</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>11</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a01</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a03</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>12</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a01</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a03</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>14</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a03</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a02</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>14</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a01</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a03</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>15</integer>
+        </value>
+      </pair>
+      <pair>
+        <initial>
+          <alternativeID>a03</alternativeID>
+        </initial>
+        <terminal>
+          <alternativeID>a02</alternativeID>
+        </terminal>
+        <value name="greater-or-equal">
+          <integer>16</integer>
+        </value>
+      </pair>
+    </pairs>
+  </alternativesComparisons>
+</xmcda:XMCDA>

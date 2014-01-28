@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
+    <program provider="PutPoznan"
+        name="postFactumRankRelatedEvalModifying"
+        displayName="postFactumRankRelatedEvalModifying"
+        version="1.0" />
+    <documentation>
+        <description>Finds ranks related possible (or necessary) comprehensive evaluation's improvement ( or deterioration ).
+			If parameter is-improvement = 1 and is-possible-comprehensive-modifying = 1 then 
+			   function finds minimal factor (factor > 1) of attributes improvement to achieve a possible preference relation
+			If parameter is-improvement = 1  and is-possible-comprehensive-modifying = 0 then 
+			   function finds minimal factor (factor > 1) of attributes improvement to achieve a necessary preference relation
+			If parameter is-improvement = 0 and is-possible-comprehensive-modifying = 1 then 
+				function finds minimal factor (1 > factor) of attributes deterioration to achieve a possible preference relation
+			If parameter is-improvement = 0 and is-possible-comprehensive-modifying = 0 then 
+			   function finds maximal factor (1 > factor) of attributes deterioration to achieve a necessary preference relation
+		</description>
+        <contact>Pawel Rychly (pawelrychly@gmail.com).</contact>
+    </documentation>
+    
+    
+    <parameters>
+        <input id="alternatives"
+            name="alternatives"
+            displayName="alternatives"
+            isoptional="0">
+            <documentation>
+                <description>List of alternatives data. </description>
+            </documentation>
+            <xmcda tag="alternatives">
+                <![CDATA[
+                    <alternatives>
+						<alternative id="%1" name="%2" />
+						[...]
+					</alternatives>
+                    ]]>
+            </xmcda>
+        </input>
+		
+		
+		<input id="criteria"
+            name="criteria"
+            displayName="criteria"
+            isoptional="0">
+            <documentation>
+                <description>List of criteria data. </description>
+            </documentation>
+            <xmcda tag="criteria">
+                <![CDATA[
+                    <criteria>
+						<criterion id="%1" name="%1">
+							<scale>
+								<quantitative>
+									<preferenceDirection>max <!-- only max value allowed --></preferenceDirection>
+								</quantitative>
+							</scale>
+						</criterion>
+						[...]
+					</criteria>
+                    ]]>
+            </xmcda>
+        </input>
+		
+        <input id="performances"
+            name="performances"
+            displayName="performances"
+            isoptional="0">
+            <documentation>
+                <description>Description of alternatives performance - values on criteria. </description>
+            </documentation>
+            <xmcda tag="performanceTable">
+                <![CDATA[
+                    <performanceTable>
+                        <alternativePerformances> 
+						    <alternativeID>%1</alternativeID>
+							<performance>
+								<criterionID>%2</criterionID>
+								<value>
+									<real>%3</real>
+								</value>
+							</performance>
+							[...]
+                        </alternativePerformances>
+						[...]
+                    </performanceTable>
+                    ]]>
+            </xmcda>
+        </input>
+		
+		<input id="target-rank" name="target-rank" displayName="target-rank"
+            isoptional="0">
+            
+            <documentation>
+                <description>
+					Target ranking position. Alternative with id %1 should be on position %2 in ranking. 
+				</description>
+            </documentation>
+            <xmcda tag="alternativesValues">
+                <![CDATA[
+                    <alternativesValues mcdaConcept="target-rank">
+						<alternativeValue mcdaConcept="target-rank">
+							<alternativeID>%1</alternativeID>
+							<value>
+							<integer>%2</integer>
+							</value>
+						</alternativeValue>
+					</alternativesValues>
+                    ]]>
+            </xmcda>
+        </input>
+        
+        
+        <input id="preferences" name="preferences" displayName="preferences"
+            isoptional="1">
+            
+            <documentation>
+                <description>
+					Preference relations.
+				</description>
+            </documentation>
+            <xmcda tag="alternativesComparisons">
+                <![CDATA[
+                    <alternativesComparisons mcdaConcept="preferences">
+                        <pairs>
+                            <pair>
+								<initial>
+									<alternativeID>%1</alternativeID>
+								</initial>
+								<terminal>
+									<alternativeID>%2</alternativeID>
+								</terminal>
+								 <value>
+									<integer>%3 <!-- type of relation: 0 - indif 1 - weak 2 - strong --></integer>
+								</value>
+							</pair>
+                            [...]
+                        </pairs>
+                    </alternativesComparisons>
+                    ]]>
+            </xmcda>
+        </input>
+		
+		<input id="characteristic-points" name="characteristic-points" displayName="characteristic points"
+            isoptional="1">
+            
+            <documentation>
+                <description>
+					Numbers of characteristic points for criteria. If 0 or not given then characteristic points are not used.
+				</description>
+            </documentation>
+            <xmcda tag="criteriaValues">
+                <![CDATA[
+                     <criteriaValues mcdaConcept="characteristicPoints">
+						<criterionValue>
+							<criterionID>%1</criterionID>
+							<value>
+								<integer>%2</integer>
+							</value>
+						</criterionValue>
+						[...]
+					</criteriaValues>
+                    ]]>
+            </xmcda>
+        </input>
+		
+		<input id="which-criteria" name="which-criteria" displayName="which-criteria"
+            isoptional="1">
+            
+            <documentation>
+                <description>
+					Determines on which criteria attributes should be modified. To select cirterion value should be different than 0. If criterion is not given or value is 0 then criterion is not modified.
+				</description>
+            </documentation>
+            <xmcda tag="criteriaValues">
+                <![CDATA[
+                     <criteriaValues mcdaConcept="criteriaIds">
+						<criterionValue>
+							<criterionID>%1</criterionID>
+							<value>
+								<integer>%2</integer>
+							</value>
+						</criterionValue>
+						[...]
+					</criteriaValues>
+                    ]]>
+            </xmcda>
+        </input>
+		
+		
+		
+		
+		
+		
+		
+		<input id="parameters" name="parameters" displayName="parameters"
+            isoptional="1">
+            
+            <documentation>
+                <description>
+					List of methodParameters:
+					strict - Single integer value. Determines whether to use sctrictly increasing (1) or monotonously increasing (other number)
+value functions
+					is-possible-comprehensive-modifying - Integer value. Determines does target relation should be possible (1) or necessary (other number)
+					is-improvement - Integer value. Determines direction of evaluations modifying. (1)- Improvement. (2) - Deterioration.
+					precision - precision of result.
+				</description>
+            </documentation>
+            <xmcda tag="methodParameters">
+                <![CDATA[
+                     <methodParameters>
+						<parameter name="strict">
+							<value>
+								<integer>[...]</integer>
+							</value>
+						</parameter>
+						<parameter name="is-possible-comprehensive-modifying">
+							<value>
+								<integer>[...]</integer>
+							</value>
+						</parameter>
+						<parameter name="is-improvement">
+							<value>
+								<integer>[...]</integer>
+							</value>
+						</parameter>
+						<parameter name="precision">
+							<value>
+								<real>[...]</real>
+							</value>
+						</parameter>
+					</methodParameters>
+                    ]]>
+            </xmcda>
+        </input>
+		
+        <output id="messages"
+            name="messages"
+            displayName="messages">
+            
+            <documentation>
+                <description>A list of messages generated by the algorithm.</description>
+            </documentation>
+            <xmcda tag="methodMessages"/>
+        </output>
+        		
+		<output id="evaluation-modifying-value"
+            name="evaluation-modifying-value"
+            displayName="evaluation-modifying-value">
+            
+            <documentation>
+                <description>Result of algorithm. AlternativeId determines modified alternative. Value determines factor.</description>
+            </documentation>
+            <xmcda tag="alternativeValue">
+                <![CDATA[
+                    <alternativeValue mcdaConcept="evaluation-modifying">
+						<alternativeID>[...]</alternativeID>
+						<value>
+						  <real>[...]</real>
+						</value>
+					</alternativeValue>
+                    ]]>
+            </xmcda>
+        </output>
+        
+    </parameters>
+</program_description>
+
