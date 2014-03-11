@@ -7,13 +7,13 @@
     <documentation>
         <description>Finds ranks related possible (or necessary) comprehensive evaluation's improvement ( or deterioration ).
 			If parameter is-improvement = 1 and is-possible-comprehensive-modifying = 1 then 
-			   function finds minimal factor (factor > 1) of attributes improvement to achieve a possible preference relation
+			   function finds minimal factor (factor > 1) of attributes improvement for alternative a to reach at least k-th rank for at least one compatible value function
 			If parameter is-improvement = 1  and is-possible-comprehensive-modifying = 0 then 
-			   function finds minimal factor (factor > 1) of attributes improvement to achieve a necessary preference relation
+			   function finds minimal factor (factor > 1) of attributes improvement for alternative a to reach at least k-th rank for each compatible value function
 			If parameter is-improvement = 0 and is-possible-comprehensive-modifying = 1 then 
-				function finds minimal factor (1 > factor) of attributes deterioration to achieve a possible preference relation
+				function finds minimal factor (1 > factor) of attributes deterioration for alternative a to reach at least k-th rank for at least one compatible value function
 			If parameter is-improvement = 0 and is-possible-comprehensive-modifying = 0 then 
-			   function finds maximal factor (1 > factor) of attributes deterioration to achieve a necessary preference relation
+			   function finds maximal factor (1 > factor) of attributes deterioration for alternative a to reach at least k-th rank for each compatible value function
 		</description>
         <contact>Pawel Rychly (pawelrychly@gmail.com).</contact>
     </documentation>

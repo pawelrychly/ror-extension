@@ -169,7 +169,7 @@ value functions
             displayName="necessary-relations">
             
             <documentation>
-                <description>List of necessary preference relations founded by UTA GMS.
+                <description>List of necessary preference relations found by UTA GMS.
 				Relation id given as integer value is used in file reducts-by-necessary-relations to identify relation. 
 				</description>
             </documentation>
